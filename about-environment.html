@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>环境设计专业介绍 - 青岛理工大学艺术与设计学院</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-subpage {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #050510;
+        }
+        
+        .hero-subpage-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-subpage-bg canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-subpage-bg img {
+            display: none;
+        }
+        
+        .hero-subpage-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(10, 20, 50, 0.4) 100%);
+            z-index: 2;
+        }
+        
+        .hero-subpage-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 150px 50px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .subpage-tag {
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .hero-subpage-content h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -3px;
+            background: linear-gradient(135deg, #ffffff 0%, #ffffff 50%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subpage-content h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            letter-spacing: 8px;
+        }
+        
+        .hero-subpage-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            padding: 100px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .section-title p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+        
+        .about-section {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 0;
+            align-items: stretch;
+        }
+        
+        .about-layout.about-reverse {
+            grid-template-columns: 1fr 1.2fr;
+        }
+        
+        .about-image-left,
+        .about-image-right {
+            overflow: hidden;
+        }
+        
+        .about-image-left img,
+        .about-image-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .about-layout:hover .about-image-left img,
+        .about-layout:hover .about-image-right img {
+            transform: scale(1.05);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(16px) saturate(140%);
+            -webkit-backdrop-filter: blur(16px) saturate(140%);
+            position: relative;
+        }
+        
+        .about-layout.about-reverse .about-content {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        
+        .about-layout.about-reverse .about-image-right {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        
+        .about-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 12rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.03);
+            line-height: 1;
+        }
+        
+        .about-content h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-content p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr 1fr;
+            grid-template-rows: auto;
+            gap: 25px;
+            margin-bottom: 80px;
+            align-items: stretch;
+        }
+        
+        .portfolio-section {
+            padding: 80px 50px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .portfolio-number {
+            font-size: 10rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.03);
+            line-height: 1;
+        }
+        
+        .portfolio-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-title p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.1rem;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-item-large {
+            grid-row: span 2;
+        }
+        
+        .portfolio-item-large img {
+            height: 100%;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .portfolio-tags span {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .course-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #8cb8ff;
+        }
+        
+        .course-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .course-card li {
+            padding: 8px 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+        
+        .goals-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .goals-img {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .goals-img img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .goals-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        
+        .goals-content p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .feature-item i {
+            color: #8cb8ff;
+            font-size: 1.3rem;
+            margin-top: 5px;
+        }
+        
+        .feature-item span {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+        
+        @media (max-width: 1024px) {
+            .course-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .goals-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-subpage-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .showcase-scroll-wrapper {
+            position: relative;
+            padding: 0 40px;
+            margin-bottom: 0;
+        }
+
+        .showcase-scroll-track {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 60px 20px 80px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            scroll-snap-type: x proximity;
+        }
+
+        .showcase-scroll-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .showcase-card {
+            flex: 0 0 auto;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.4),
+                0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform;
+        }
+
+        .showcase-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            z-index: 2;
+            pointer-events: none;
+            transition: border-color 0.4s ease;
+        }
+
+        .showcase-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 100%);
+            border-radius: 24px 24px 0 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-16px) rotate(0deg) scale(1.04) !important;
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(255, 255, 255, 0.06);
+            z-index: 10;
+        }
+
+        .showcase-card:hover::before {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .showcase-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .showcase-card:hover img {
+            transform: scale(1.12);
+        }
+
+        /* Artistic staggered sizes */
+        .showcase-card-1 {
+            width: 320px;
+            height: 440px;
+            transform: rotate(-2deg) translateY(20px);
+        }
+
+        .showcase-card-2 {
+            width: 440px;
+            height: 340px;
+            transform: rotate(1.5deg) translateY(-10px);
+        }
+
+        .showcase-card-3 {
+            width: 280px;
+            height: 400px;
+            transform: rotate(-1deg) translateY(30px);
+        }
+
+        .showcase-card-4 {
+            width: 460px;
+            height: 360px;
+            transform: rotate(2deg) translateY(-5px);
+        }
+
+        .showcase-card-5 {
+            width: 300px;
+            height: 460px;
+            transform: rotate(-1.5deg) translateY(15px);
+        }
+
+        .showcase-card-6 {
+            width: 420px;
+            height: 350px;
+            transform: rotate(1deg) translateY(-20px);
+        }
+
+        .showcase-card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 28px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85) 40%);
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 3;
+        }
+
+        .showcase-card:hover .showcase-card-info {
+            transform: translateY(0);
+        }
+
+        .showcase-tag {
+            display: inline-block;
+            padding: 5px 16px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 30px;
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 12px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            letter-spacing: 1px;
+        }
+
+        .showcase-card-info h4 {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .showcase-card-info p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.6;
+        }
+
+        /* Hover hint dot */
+        .showcase-card-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            z-index: 3;
+            font-weight: 600;
+        }
+
+        .showcase-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 5;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .showcase-arrow:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .showcase-arrow:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .showcase-arrow-left {
+            left: 0;
+        }
+
+        .showcase-arrow-right {
+            right: 0;
+        }
+
+        .showcase-progress {
+            width: 240px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 2px;
+            margin: 0 auto 60px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .showcase-progress::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 0;
+            right: 0;
+            bottom: -8px;
+        }
+
+        .showcase-progress-bar {
+            height: 100%;
+            width: 30%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.7));
+            border-radius: 2px;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .showcase-progress-bar::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Scroll hint animation */
+        .showcase-hint {
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            animation: hintPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes hintPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="index.html" class="logo">QUT<span>ART</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about-environment.html" class="active">环境设计</a></li>
+            <li><a href="graduation-exhibition.html">毕业展</a></li>
+            <li><a href="tools-museum.html">美学馆</a></li>
+            <li><a href="index.html#contact">联系我们</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <section class="hero-subpage">
+        <div class="hero-subpage-bg">
+            <canvas id="particleCanvas"></canvas>
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20city%20skyline%20architecture%20minimalist%20blue%20orange%20gradient%20water%20reflection%20abstract%20wave%20lines%20futuristic%20urban%20landscape%20clean%20design&image_size=landscape_16_9" alt="环境设计">
+            <div class="hero-subpage-overlay"></div>
+        </div>
+        <div class="hero-subpage-content">
+            <span class="subpage-tag">ENVIRONMENTAL DESIGN</span>
+            <h1>环境设计专业</h1>
+            <h2>ART & ENVIRONMENT</h2>
+            <p>艺术与技术的融合 · 可持续设计理念的践行者</p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-layout">
+            <div class="about-image-left scroll-reveal-left">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20minimalist%20interior%20design%20dark%20gray%20background%20elegant%20furniture%20professional%20studio&image_size=portrait_4_3" alt="环境设计">
+            </div>
+            <div class="about-content scroll-reveal-right">
+                <span class="about-number">01</span>
+                <h2>关于我们</h2>
+                <p>青岛理工大学艺术与设计学院环境设计专业，始建于1998年，是山东省最早开设环境设计专业的院校之一。二十余年来，专业始终秉持"艺术与技术融合、传统与创新共生"的教育理念。</p>
+                <p>我们致力于培养具有国际视野、创新精神和实践能力的高素质环境设计人才，涵盖室内设计、景观设计、建筑外部空间设计等多个方向。</p>
+            </div>
+        </div>
+        
+        <div class="about-layout about-reverse">
+            <div class="about-content scroll-reveal-left">
+                <span class="about-number">02</span>
+                <h2>可持续设计</h2>
+                <p>可持续设计是我们的核心教学理念之一。我们鼓励学生在设计中融入绿色环保理念，探索低碳材料的应用，创造既美观又环保的空间环境。</p>
+                <p>通过与国内外知名设计机构的合作交流，学生能够接触到行业前沿的设计理念和技术，使设计过程更加高效、创新。</p>
+            </div>
+            <div class="about-image-right scroll-reveal-right">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20sustainable%20architecture%20green%20building%20eco%20friendly%20design%20minimalist%20dark%20background&image_size=portrait_4_3" alt="可持续设计">
+            </div>
+        </div>
+    </section>
+    
+    <section class="portfolio-section">
+        <div class="portfolio-header scroll-reveal">
+            <span class="portfolio-number">03</span>
+            <div class="portfolio-title">
+                <h2>课程体系</h2>
+                <p>系统化的专业课程设置</p>
+            </div>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item portfolio-item-large scroll-reveal-left">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Design%20studio%20creative%20workspace%20modern%20minimalist%20interior%20dark%20gray&image_size=landscape_4_3" alt="基础课程">
+                <div class="portfolio-overlay">
+                    <h4>基础课程模块</h4>
+                    <div class="portfolio-tags">
+                        <span>设计素描与色彩</span>
+                        <span>构成设计</span>
+                        <span>设计概论</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item scroll-reveal-right">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20interior%20design%20blueprint%20architecture%20professional%20dark%20background&image_size=square" alt="专业核心课程">
+                <div class="portfolio-overlay">
+                    <h4>专业核心课程</h4>
+                </div>
+            </div>
+            <div class="portfolio-item scroll-reveal-right scroll-reveal-delay-1">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Design%20workshop%20team%20collaboration%20creative%20modern%20studio&image_size=square" alt="实践与创新课程">
+                <div class="portfolio-overlay">
+                    <h4>实践与创新课程</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="section-title scroll-reveal">
+            <h2>培养目标</h2>
+            <p>塑造未来的环境设计领袖</p>
+        </div>
+        
+        <div class="goals-section">
+            <div class="goals-content scroll-reveal-left">
+                <h3>培养具备综合素养的设计人才</h3>
+                <p>本专业旨在培养德、智、体、美、劳全面发展，具有扎实的环境设计基础理论和专业技能，掌握AIGC等前沿设计技术，具备创新思维和可持续设计理念的高素质应用型人才。</p>
+                <p>毕业生将具备在建筑设计研究院、景观设计公司、室内装饰企业、房地产开发公司等单位从事环境设计、研究、教学及管理工作的能力。</p>
+                <div class="feature-list">
+                    <div class="feature-item scroll-reveal scroll-reveal-delay-1">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>创新思维能力</span>
+                    </div>
+                    <div class="feature-item scroll-reveal scroll-reveal-delay-2">
+                        <i class="fas fa-palette"></i>
+                        <span>艺术审美能力</span>
+                    </div>
+                    <div class="feature-item scroll-reveal scroll-reveal-delay-3">
+                        <i class="fas fa-code"></i>
+                        <span>技术应用能力</span>
+                    </div>
+                    <div class="feature-item scroll-reveal scroll-reveal-delay-4">
+                        <i class="fas fa-leaf"></i>
+                        <span>可持续设计能力</span>
+                    </div>
+                </div>
+            </div>
+            <div class="goals-img scroll-reveal-right">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20interior%20design%20showcase%20contemporary%20living%20space%20natural%20light%20plants%20minimalist%20furniture%20sustainable%20materials&image_size=landscape_4_3" alt="培养目标">
+            </div>
+        </div>
+    </section>
+    
+    <section class="content-section" style="background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); border-top: 1px solid rgba(255, 255, 255, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden;">
+        <div class="section-title scroll-reveal">
+            <h2>优秀案例展示</h2>
+            <p>AIGC助力设计创新</p>
+        </div>
+        
+        <div class="showcase-hint">自动滚动展示 · 悬停暂停 · 拖拽浏览</div>
+        <div class="showcase-scroll-wrapper">
+            <button class="showcase-arrow showcase-arrow-left" id="showcaseLeft">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="showcase-scroll-track" id="showcaseTrack">
+                <div class="showcase-card showcase-card-1">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Sustainable%20urban%20park%20design%20eco%20friendly%20landscape%20modern%20architecture%20green%20spaces%20community%20area&image_size=portrait_4_3" alt="城市公园设计">
+                    <span class="showcase-card-number">01</span>
+                    <div class="showcase-card-info">
+                        <span class="showcase-tag">景观设计</span>
+                        <h4>城市生态公园设计</h4>
+                        <p>运用AIGC生成多种方案，优化空间布局与植物配置</p>
+                    </div>
+                </div>
+                <div class="showcase-card showcase-card-2">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20office%20interior%20design%20open%20concept%20workspace%20natural%20lighting%20biophilic%20design&image_size=landscape_4_3" alt="办公空间设计">
+                    <span class="showcase-card-number">02</span>
+                    <div class="showcase-card-info">
+                        <span class="showcase-tag">室内设计</span>
+                        <h4>现代办公空间设计</h4>
+                        <p>AI辅助色彩搭配与材料选择，打造人性化办公环境</p>
+                    </div>
+                </div>
+                <div class="showcase-card showcase-card-3">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Coastal%20resort%20architecture%20beach%20front%20modern%20design%20sustainable%20tourism%20ocean%20view&image_size=portrait_4_3" alt="滨海度假区设计">
+                    <span class="showcase-card-number">03</span>
+                    <div class="showcase-card-info">
+                        <span class="showcase-tag">规划方案</span>
+                        <h4>滨海度假区规划</h4>
+                        <p>结合地域特色，AI生成多维度设计方案</p>
+                    </div>
+                </div>
+                <div class="showcase-card showcase-card-4">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Cultural%20center%20architecture%20modern%20museum%20design%20geometric%20forms%20natural%20light%20public%20space&image_size=landscape_4_3" alt="文化中心设计">
+                    <span class="showcase-card-number">04</span>
+                    <div class="showcase-card-info">
+                        <span class="showcase-tag">建筑设计</span>
+                        <h4>文化艺术中心设计</h4>
+                        <p>AIGC辅助建筑形态生成与空间组织</p>
+                    </div>
+                </div>
+                <div class="showcase-card showcase-card-5">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Zen%20garden%20design%20Japanese%20inspired%20courtyard%20meditation%20space%20minimalist%20stone%20water%20feature&image_size=portrait_4_3" alt="禅意庭院">
+                    <span class="showcase-card-number">05</span>
+                    <div class="showcase-card-info">
+                        <span class="showcase-tag">景观设计</span>
+                        <h4>禅意庭院设计</h4>
+                        <p>东方美学与现代设计的融合，营造静谧空间</p>
+                    </div>
+                </div>
+                <div class="showcase-card showcase-card-6">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Creative%20loft%20apartment%20interior%20industrial%20style%20exposed%20brick%20modern%20furniture%20warm%20lighting&image_size=landscape_4_3" alt="创意loft">
+                    <span class="showcase-card-number">06</span>
+                    <div class="showcase-card-info">
+                        <span class="showcase-tag">室内设计</span>
+                        <h4>创意LOFT空间</h4>
+                        <p>工业风与艺术感的碰撞，重塑居住体验</p>
+                    </div>
+                </div>
+            </div>
+            <button class="showcase-arrow showcase-arrow-right" id="showcaseRight">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="showcase-progress">
+            <div class="showcase-progress-bar" id="showcaseProgress"></div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>QUT ART</h3>
+                <p>青岛理工大学艺术与设计学院</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>地址：青岛市市北区抚顺路11号</p>
+                    <p>电话：0532-85071000</p>
+                    <p>邮箱：art@qut.edu.cn</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="index.html#about">学院概况</a></li>
+                        <li><a href="index.html#programs">专业设置</a></li>
+                        <li><a href="index.html#works">教学成果</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 QUT ART DESIGN. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <audio id="bgMusic" loop preload="auto">
+        <source src="666.MP3/666.MP3" type="audio/mpeg">
+    </audio>
+    <button class="music-toggle" id="musicToggle">
+        <i class="fas fa-music"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+        (function() {
+            var track = document.getElementById('showcaseTrack');
+            var leftBtn = document.getElementById('showcaseLeft');
+            var rightBtn = document.getElementById('showcaseRight');
+            var progressBar = document.getElementById('showcaseProgress');
+            var scrollAmount = 420;
+
+            if (!track || !leftBtn || !rightBtn) return;
+
+            // ========== Auto Scroll ==========
+            var autoSpeed = 0.6; // px per frame
+            var autoScrollId = null;
+            var isPaused = false;
+            var isUserInteracting = false;
+            var pauseTimer = null;
+
+            function startAutoScroll() {
+                if (autoScrollId) return;
+                autoScrollId = requestAnimationFrame(autoStep);
+            }
+
+            function stopAutoScroll() {
+                if (autoScrollId) {
+                    cancelAnimationFrame(autoScrollId);
+                    autoScrollId = null;
+                }
+            }
+
+            function autoStep() {
+                if (!isPaused && !isUserInteracting) {
+                    var maxScroll = track.scrollWidth - track.clientWidth;
+                    track.scrollLeft += autoSpeed;
+
+                    // Loop back when reaching the end
+                    if (track.scrollLeft >= maxScroll - 1) {
+                        track.scrollLeft = 0;
+                    }
+                }
+                autoScrollId = requestAnimationFrame(autoStep);
+            }
+
+            // Pause on hover over the wrapper
+            var wrapper = track.closest('.showcase-scroll-wrapper');
+            if (wrapper) {
+                wrapper.addEventListener('mouseenter', function() {
+                    isPaused = true;
+                });
+                wrapper.addEventListener('mouseleave', function() {
+                    isPaused = false;
+                });
+            }
+
+            // Resume auto scroll after user interaction stops
+            function resumeAfterDelay() {
+                if (pauseTimer) clearTimeout(pauseTimer);
+                pauseTimer = setTimeout(function() {
+                    isUserInteracting = false;
+                }, 3000);
+            }
+
+            // ========== Arrow Click ==========
+            leftBtn.addEventListener('click', function() {
+                isUserInteracting = true;
+                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                resumeAfterDelay();
+            });
+            rightBtn.addEventListener('click', function() {
+                isUserInteracting = true;
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                resumeAfterDelay();
+            });
+
+            // ========== Progress Bar ==========
+            track.addEventListener('scroll', function() {
+                var maxScroll = track.scrollWidth - track.clientWidth;
+                if (maxScroll <= 0) return;
+                var currentScroll = track.scrollLeft;
+                var progress = currentScroll / maxScroll;
+                if (progressBar) {
+                    progressBar.style.transform = 'translateX(' + (progress * 230) + '%)';
+                }
+            });
+
+            // ========== Mouse Drag ==========
+            var isDown = false;
+            var startX, scrollLeft;
+            var velocity = 0;
+            var lastX = 0;
+            var lastTime = 0;
+            var momentumFrame = null;
+
+            track.addEventListener('mousedown', function(e) {
+                isDown = true;
+                isUserInteracting = true;
+                startX = e.pageX - track.offsetLeft;
+                scrollLeft = track.scrollLeft;
+                lastX = e.pageX;
+                lastTime = Date.now();
+                velocity = 0;
+                track.style.cursor = 'grabbing';
+                track.style.scrollBehavior = 'auto';
+                if (momentumFrame) cancelAnimationFrame(momentumFrame);
+                if (pauseTimer) clearTimeout(pauseTimer);
+            });
+
+            track.addEventListener('mouseleave', function() {
+                if (isDown) startMomentum();
+                isDown = false;
+                track.style.cursor = 'grab';
+                track.style.scrollBehavior = 'smooth';
+            });
+
+            track.addEventListener('mouseup', function() {
+                if (isDown) startMomentum();
+                isDown = false;
+                track.style.cursor = 'grab';
+                track.style.scrollBehavior = 'smooth';
+                resumeAfterDelay();
+            });
+
+            track.addEventListener('mousemove', function(e) {
+                if (!isDown) return;
+                e.preventDefault();
+                var x = e.pageX - track.offsetLeft;
+                var walk = (x - startX) * 1.2;
+                track.scrollLeft = scrollLeft - walk;
+
+                var now = Date.now();
+                var dt = now - lastTime;
+                if (dt > 0) {
+                    velocity = (e.pageX - lastX) / dt;
+                }
+                lastX = e.pageX;
+                lastTime = now;
+            });
+
+            function startMomentum() {
+                track.style.scrollBehavior = 'auto';
+                var friction = 0.95;
+                var minVelocity = 0.1;
+
+                function step() {
+                    velocity *= friction;
+                    if (Math.abs(velocity) < minVelocity) {
+                        track.style.scrollBehavior = 'smooth';
+                        return;
+                    }
+                    track.scrollLeft -= velocity * 16;
+                    momentumFrame = requestAnimationFrame(step);
+                }
+                momentumFrame = requestAnimationFrame(step);
+            }
+
+            // ========== Touch Support ==========
+            var touchStartX = 0;
+            var touchScrollLeft = 0;
+
+            track.addEventListener('touchstart', function(e) {
+                isUserInteracting = true;
+                touchStartX = e.touches[0].pageX;
+                touchScrollLeft = track.scrollLeft;
+                track.style.scrollBehavior = 'auto';
+                if (pauseTimer) clearTimeout(pauseTimer);
+            }, { passive: true });
+
+            track.addEventListener('touchmove', function(e) {
+                var x = e.touches[0].pageX;
+                var walk = (touchStartX - x) * 1.2;
+                track.scrollLeft = touchScrollLeft + walk;
+            }, { passive: true });
+
+            track.addEventListener('touchend', function() {
+                track.style.scrollBehavior = 'smooth';
+                resumeAfterDelay();
+            });
+
+            track.style.cursor = 'grab';
+
+            // ========== Keyboard Support ==========
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    isUserInteracting = true;
+                    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    resumeAfterDelay();
+                } else if (e.key === 'ArrowRight') {
+                    isUserInteracting = true;
+                    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    resumeAfterDelay();
+                }
+            });
+
+            // ========== Start ==========
+            startAutoScroll();
+        })();
+    </script>
+    <script>
+        (function() {
+            var canvas = document.getElementById('particleCanvas');
+            var ctx = canvas.getContext('2d');
+            var width, height;
+            var particles = [];
+            var lines = [];
+            
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+            
+            function random(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+            
+            function Particle() {
+                this.x = random(0, width);
+                this.y = random(height, height + 200);
+                this.size = random(1, 4);
+                this.speedX = random(-0.3, 0.3);
+                this.speedY = random(-0.5, -1.5);
+                this.opacity = random(0.2, 0.8);
+                this.hue = 0;
+                this.saturation = 0;
+                this.angle = 0;
+                this.angleSpeed = random(0.01, 0.03);
+                this.trail = [];
+            }
+            
+            Particle.prototype.update = function() {
+                this.x += this.speedX + Math.sin(this.y * 0.002) * 0.5;
+                this.y += this.speedY;
+                this.angle += this.angleSpeed;
+                
+                this.trail.push({ x: this.x, y: this.y });
+                if (this.trail.length > 20) {
+                    this.trail.shift();
+                }
+                
+                if (this.y < -50) {
+                    this.y = height + 50;
+                    this.x = random(0, width);
+                    this.trail = [];
+                }
+                
+                if (this.x < -20 || this.x > width + 20) {
+                    this.x = random(0, width);
+                }
+            };
+            
+            Particle.prototype.draw = function() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'hsla(' + this.hue + ', 0%, 95%, ' + this.opacity + ')';
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
+                ctx.fillStyle = 'hsla(' + this.hue + ', 0%, 90%, ' + this.opacity * 0.3 + ')';
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size * 4, 0, Math.PI * 2);
+                ctx.fillStyle = 'hsla(' + this.hue + ', 0%, 85%, ' + this.opacity * 0.15 + ')';
+                ctx.fill();
+            };
+            
+            function Jellyfish() {
+                this.x = random(width * 0.15, width * 0.85);
+                this.y = random(height + 100, height + 400);
+                this.size = random(80, 200);
+                this.speedY = random(-0.2, -0.6);
+                this.speedX = random(-0.15, 0.15);
+                this.opacity = random(0.2, 0.45);
+                this.hue = 0;
+                this.pulse = random(0, Math.PI * 2);
+                this.pulseSpeed = random(0.015, 0.04);
+                this.tentacleWave = random(0, Math.PI * 2);
+                this.tentacleWaveSpeed = random(0.02, 0.05);
+                this.glowIntensity = random(0.3, 0.7);
+            }
+            
+            Jellyfish.prototype.update = function() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.y * 0.002 + this.pulse) * 0.6;
+                this.pulse += this.pulseSpeed;
+                this.tentacleWave += this.tentacleWaveSpeed;
+                
+                if (this.y < -this.size * 3 - 50) {
+                    this.y = height + 200;
+                    this.x = random(width * 0.15, width * 0.85);
+                }
+            };
+            
+            Jellyfish.prototype.draw = function() {
+                var pulseScale = 1 + Math.sin(this.pulse) * 0.12;
+                var s = this.size * pulseScale;
+                var w = s * 1.2;
+                var h = s * 0.9;
+                
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                
+                // 外层光晕
+                var outerGlow = ctx.createRadialGradient(0, -h * 0.2, 0, 0, 0, w * 1.5);
+                outerGlow.addColorStop(0, 'hsla(' + this.hue + ', 0%, 95%, ' + this.opacity * this.glowIntensity * 0.3 + ')');
+                outerGlow.addColorStop(0.3, 'hsla(' + this.hue + ', 0%, 85%, ' + this.opacity * this.glowIntensity * 0.15 + ')');
+                outerGlow.addColorStop(0.6, 'hsla(' + this.hue + ', 0%, 70%, ' + this.opacity * this.glowIntensity * 0.05 + ')');
+                outerGlow.addColorStop(1, 'hsla(' + this.hue + ', 0%, 50%, 0)');
+                ctx.fillStyle = outerGlow;
+                ctx.beginPath();
+                ctx.ellipse(0, -h * 0.15, w * 1.5, h * 1.5, 0, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // 伞盖主体 - 使用贝塞尔曲线画半圆形钟罩
+                ctx.beginPath();
+                ctx.moveTo(-w, h * 0.15);
+                // 左下边缘
+                ctx.bezierCurveTo(-w, h * 0.15, -w * 0.9, h * 0.25, -w * 0.7, h * 0.3);
+                // 左侧边缘波浪
+                var edgeWaves = 6;
+                for (var e = 0; e < edgeWaves; e++) {
+                    var t1 = e / edgeWaves;
+                    var t2 = (e + 0.5) / edgeWaves;
+                    var t3 = (e + 1) / edgeWaves;
+                    var bx1 = -w * 0.7 + (w * 1.4) * t2;
+                    var by1 = h * 0.3 + Math.sin(this.pulse * 3 + e * 1.5) * h * 0.04;
+                    var bx2 = -w * 0.7 + (w * 1.4) * t3;
+                    var by2 = h * 0.3 + Math.sin(this.pulse * 3 + (e + 1) * 1.5) * h * 0.04;
+                    ctx.quadraticCurveTo(bx1, by1, bx2, by2);
+                }
+                // 右下边缘
+                ctx.bezierCurveTo(w * 0.9, h * 0.25, w, h * 0.15, w, h * 0.15);
+                // 右侧弧线到顶部
+                ctx.bezierCurveTo(w * 1.05, -h * 0.1, w * 0.8, -h * 0.75, w * 0.3, -h * 0.85);
+                // 顶部圆弧
+                ctx.bezierCurveTo(w * 0.1, -h * 0.95, -w * 0.1, -h * 0.95, -w * 0.3, -h * 0.85);
+                // 左侧弧线
+                ctx.bezierCurveTo(-w * 0.8, -h * 0.75, -w * 1.05, -h * 0.1, -w, h * 0.15);
+                ctx.closePath();
+                
+                // 伞盖渐变填充
+                var bodyGrad = ctx.createRadialGradient(0, -h * 0.3, s * 0.1, 0, -h * 0.1, w * 1.1);
+                bodyGrad.addColorStop(0, 'hsla(' + this.hue + ', 0%, 95%, ' + this.opacity * 0.7 + ')');
+                bodyGrad.addColorStop(0.2, 'hsla(' + this.hue + ', 0%, 90%, ' + this.opacity * 0.5 + ')');
+                bodyGrad.addColorStop(0.5, 'hsla(' + this.hue + ', 0%, 80%, ' + this.opacity * 0.35 + ')');
+                bodyGrad.addColorStop(0.8, 'hsla(' + this.hue + ', 0%, 70%, ' + this.opacity * 0.2 + ')');
+                bodyGrad.addColorStop(1, 'hsla(' + this.hue + ', 0%, 55%, ' + this.opacity * 0.08 + ')');
+                ctx.fillStyle = bodyGrad;
+                ctx.fill();
+                
+                // 伞盖边缘发光
+                ctx.strokeStyle = 'hsla(' + this.hue + ', 0%, 90%, ' + this.opacity * 0.5 + ')';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+                
+                // 内部纹理 - 放射状脉络
+                ctx.save();
+                ctx.globalAlpha = this.opacity * 0.2;
+                var veins = 16;
+                for (var v = 0; v < veins; v++) {
+                    var angle = (v / veins) * Math.PI * 2;
+                    ctx.beginPath();
+                    ctx.moveTo(0, -h * 0.4);
+                    var vx = Math.cos(angle) * w * 0.7;
+                    var vy = Math.sin(angle) * h * 0.5 - h * 0.1;
+                    var cpx = Math.cos(angle) * w * 0.3;
+                    var cpy = Math.sin(angle) * h * 0.2 - h * 0.25;
+                    ctx.quadraticCurveTo(cpx, cpy, vx, vy);
+                    ctx.strokeStyle = 'hsla(' + (this.hue + 10) + ', 0%, 90%, 0.6)';
+                    ctx.lineWidth = 0.8;
+                    ctx.stroke();
+                }
+                ctx.restore();
+                
+                // 中心发光点
+                var centerGlow = ctx.createRadialGradient(0, -h * 0.35, 0, 0, -h * 0.35, s * 0.25);
+                centerGlow.addColorStop(0, 'hsla(' + this.hue + ', 0%, 98%, ' + this.opacity * this.glowIntensity * 0.8 + ')');
+                centerGlow.addColorStop(0.5, 'hsla(' + this.hue + ', 0%, 90%, ' + this.opacity * this.glowIntensity * 0.3 + ')');
+                centerGlow.addColorStop(1, 'hsla(' + this.hue + ', 0%, 70%, 0)');
+                ctx.fillStyle = centerGlow;
+                ctx.beginPath();
+                ctx.ellipse(0, -h * 0.35, s * 0.25, s * 0.2, 0, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // 触手 - 长而柔美的线条
+                var tentacleCount = 8;
+                for (var t = 0; t < tentacleCount; t++) {
+                    var baseX = ((t / (tentacleCount - 1)) - 0.5) * w * 1.4;
+                    var tentLen = random(s * 1.2, s * 2.5);
+                    var thick = random(1.5, 3);
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(baseX, h * 0.25);
+                    
+                    var segments = 12;
+                    for (var seg = 1; seg <= segments; seg++) {
+                        var progress = seg / segments;
+                        var segY = h * 0.25 + progress * tentLen;
+                        var waveAmp = progress * progress * 25;
+                        var segX = baseX + Math.sin(this.tentacleWave + progress * 4 + t * 0.8) * waveAmp;
+                        var prevProgress = (seg - 1) / segments;
+                        var prevSegY = h * 0.25 + prevProgress * tentLen;
+                        var prevWaveAmp = prevProgress * prevProgress * 25;
+                        var prevSegX = baseX + Math.sin(this.tentacleWave + prevProgress * 4 + t * 0.8) * prevWaveAmp;
+                        
+                        var cpx2 = (prevSegX + segX) / 2 + Math.sin(this.tentacleWave * 1.5 + t + seg) * 5;
+                        var cpy2 = (prevSegY + segY) / 2;
+                        ctx.quadraticCurveTo(prevSegX, prevSegY, cpx2, cpy2);
+                    }
+                    
+                    // 触手渐变：从亮到暗
+                    var tentGrad = ctx.createLinearGradient(baseX, h * 0.25, baseX, h * 0.25 + tentLen);
+                    tentGrad.addColorStop(0, 'hsla(' + this.hue + ', 0%, 90%, ' + this.opacity * 0.6 + ')');
+                    tentGrad.addColorStop(0.4, 'hsla(' + this.hue + ', 0%, 80%, ' + this.opacity * 0.35 + ')');
+                    tentGrad.addColorStop(1, 'hsla(' + this.hue + ', 0%, 60%, 0)');
+                    
+                    ctx.strokeStyle = tentGrad;
+                    ctx.lineWidth = thick * (1 - progress * 0.5);
+                    ctx.lineCap = 'round';
+                    ctx.stroke();
+                }
+                
+                // 短触须（口腕）- 伞盖下方中间区域
+                for (var o = 0; o < 4; o++) {
+                    var ox = ((o / 3) - 0.5) * w * 0.5;
+                    var oLen = random(s * 0.5, s * 0.9);
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(ox, h * 0.15);
+                    
+                    for (var os = 1; os <= 6; os++) {
+                        var op = os / 6;
+                        var oy = h * 0.15 + op * oLen;
+                        var ox2 = ox + Math.sin(this.tentacleWave * 1.8 + op * 3 + o * 1.5) * op * 15;
+                        var oprev = (os - 1) / 6;
+                        var oprevY = h * 0.15 + oprev * oLen;
+                        var oprevX = ox + Math.sin(this.tentacleWave * 1.8 + oprev * 3 + o * 1.5) * oprev * 15;
+                        ctx.quadraticCurveTo(oprevX, oprevY, (oprevX + ox2) / 2, (oprevY + oy) / 2);
+                    }
+                    
+                    ctx.strokeStyle = 'hsla(' + (this.hue + 20) + ', 0%, 88%, ' + this.opacity * 0.45 + ')';
+                    ctx.lineWidth = 2.5 - o * 0.3;
+                    ctx.lineCap = 'round';
+                    ctx.stroke();
+                }
+                
+                // 闪烁的生物荧光点
+                for (var sp = 0; sp < 8; sp++) {
+                    var spAngle = (sp / 8) * Math.PI * 2 + this.pulse;
+                    var spR = random(s * 0.1, s * 0.4);
+                    var spX = Math.cos(spAngle) * spR;
+                    var spY = Math.sin(spAngle) * spR * 0.6 - h * 0.3;
+                    var spSize = random(1, 2.5);
+                    var spAlpha = (0.5 + Math.sin(this.pulse * 3 + sp * 2) * 0.5) * this.opacity * 0.6;
+                    
+                    var sparkGlow = ctx.createRadialGradient(spX, spY, 0, spX, spY, spSize * 4);
+                    sparkGlow.addColorStop(0, 'hsla(' + (this.hue + random(-20, 20)) + ', 0%, 98%, ' + spAlpha + ')');
+                    sparkGlow.addColorStop(0.3, 'hsla(' + (this.hue + random(-10, 10)) + ', 0%, 90%, ' + spAlpha * 0.4 + ')');
+                    sparkGlow.addColorStop(1, 'hsla(' + this.hue + ', 0%, 70%, 0)');
+                    
+                    ctx.fillStyle = sparkGlow;
+                    ctx.beginPath();
+                    ctx.arc(spX, spY, spSize * 4, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    ctx.fillStyle = 'hsla(' + this.hue + ', 0%, 98%, ' + spAlpha + ')';
+                    ctx.beginPath();
+                    ctx.arc(spX, spY, spSize, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                ctx.restore();
+            };
+            
+            var jellyfish = [];
+            
+            function init() {
+                resize();
+                window.addEventListener('resize', resize);
+                
+                for (var i = 0; i < 80; i++) {
+                    particles.push(new Particle());
+                }
+                
+                for (var j = 0; j < 3; j++) {
+                    var jf = new Jellyfish();
+                    jf.y = random(0, height);
+                    jellyfish.push(jf);
+                }
+            }
+            
+            function animate() {
+                ctx.fillStyle = 'rgba(5, 5, 16, 0.15)';
+                ctx.fillRect(0, 0, width, height);
+                
+                for (var i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+                
+                for (var j = 0; j < jellyfish.length; j++) {
+                    jellyfish[j].update();
+                    jellyfish[j].draw();
+                }
+                
+                requestAnimationFrame(animate);
+            }
+            
+            init();
+            animate();
+        })();
+    </script>
+</body>
+</html>

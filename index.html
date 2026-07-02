@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>青岛理工大学艺术与设计学院</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <svg class="preloader-svg" viewBox="0 0 120 120">
+                <circle class="preloader-track" cx="60" cy="60" r="52"/>
+                <circle class="preloader-progress" cx="60" cy="60" r="52" id="preloaderCircle"/>
+            </svg>
+            <div class="preloader-percent" id="preloaderPercent">0</div>
+        </div>
+        <button class="preloader-enter" id="preloaderEnter">点击进入</button>
+    </div>
+
+    <nav id="navbar">
+        <a href="index.html" class="logo">QUT<span>ART</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">首页</a></li>
+            <li><a href="about-environment.html">环境设计</a></li>
+            <li><a href="graduation-exhibition.html">毕业展</a></li>
+            <li><a href="tools-museum.html">美学馆</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <canvas id="heroCanvas"></canvas>
+        <div class="hero-content">
+            <span class="hero-tag">DESIGN</span>
+            <h1 class="artistic-title">
+                <span class="char-1">艺</span>
+                <span class="char-2">术</span>
+                <span class="char-3">与</span>
+                <span class="char-4">设</span>
+                <span class="char-5">计</span>
+                <span class="char-6">学</span>
+                <span class="char-7">院</span>
+            </h1>
+            <p>传承匠心 · 创新设计 · 融合科技</p>
+            <a href="#about" class="hero-btn">探索学院</a>
+        </div>
+        <div class="hero-number">01</div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-img scroll-reveal-left">
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Qingdao%20University%20of%20Technology%20campus%20scenery%20red%20brick%20buildings%20lake%20stone%20bridge%20sunset%20mountain%20view%20Chinese%20university%20campus%20landscape&image_size=portrait_4_3" alt="青岛理工大学校园">
+        </div>
+        <div class="about-content scroll-reveal-right">
+            <span class="section-number">02</span>
+            <h2>ABOUT US</h2>
+            <h3>艺术与设计学院</h3>
+            <p>青岛理工大学艺术与设计学院始建于1989年，是山东省最早开设设计类专业的院校之一。学院秉承"崇德尚艺、笃学创新"的院训，致力于培养具有国际视野、创新精神和实践能力的高素质设计人才。</p>
+            <p>学院现有环境设计、视觉传达设计、产品设计、数字媒体艺术四个本科专业，拥有一支高水平的师资队伍，其中教授、副教授占比超过60%。</p>
+            <a href="#" class="btn-outline">了解更多</a>
+        </div>
+    </section>
+    
+    <section class="stats">
+        <div class="stat-item scroll-reveal scroll-reveal-delay-1">
+            <h4>35+</h4>
+            <p>年办学历史</p>
+        </div>
+        <div class="stat-item scroll-reveal scroll-reveal-delay-2">
+            <h4>4</h4>
+            <p>本科专业</p>
+        </div>
+        <div class="stat-item scroll-reveal scroll-reveal-delay-3">
+            <h4>5000+</h4>
+            <p>优秀毕业生</p>
+        </div>
+        <div class="stat-item scroll-reveal scroll-reveal-delay-4">
+            <h4>80+</h4>
+            <p>专业教师</p>
+        </div>
+    </section>
+
+    <section class="programs" id="programs">
+        <div class="section-header scroll-reveal">
+            <span class="section-number">03</span>
+            <h2>PORTFOLIO</h2>
+            <h3>专业设置</h3>
+        </div>
+        
+        <div class="programs-showcase">
+	            <div class="programs-carousel">
+	                <a href="about-environment.html" class="program-slide program-center">
+	                    <div class="program-slide-inner">
+	                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Environmental%20design%20interior%20architecture%20modern%20space%20planning%20sustainable%20living&image_size=landscape_4_3" alt="环境设计">
+	                        <div class="program-slide-overlay"></div>
+	                    </div>
+	                    <div class="program-slide-info">
+	                        <h4>环境设计</h4>
+	                        <p>专注于室内外空间设计、景观规划与可持续设计研究</p>
+	                    </div>
+	                </a>
+	                
+	                <a href="about-environment.html" class="program-slide program-left">
+	                    <div class="program-slide-inner">
+	                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Visual%20communication%20design%20graphic%20art%20brand%20identity%20creative%20typography&image_size=landscape_4_3" alt="视觉传达设计">
+	                        <div class="program-slide-overlay"></div>
+	                    </div>
+	                    <div class="program-slide-info">
+	                        <h4>视觉传达设计</h4>
+	                        <p>涵盖品牌设计、平面设计、数字媒体等领域</p>
+	                    </div>
+	                </a>
+	                
+	                <a href="about-environment.html" class="program-slide program-right">
+	                    <div class="program-slide-inner">
+	                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Product%20design%20industrial%20modern%20innovation%20technology%20creative%20form&image_size=landscape_4_3" alt="产品设计">
+	                        <div class="program-slide-overlay"></div>
+	                    </div>
+                    <div class="program-slide-info">
+                        <h4>产品设计</h4>
+                        <p>专注于工业产品创新设计，结合人机工程学与美学</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="programs-footer">
+                <h3>开启你的设计之旅</h3>
+                <p>探索三大专业方向，发现你的设计潜能</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="works" id="works">
+        <div class="section-header scroll-reveal">
+            <span class="section-number">04</span>
+            <h2>WORKS</h2>
+            <h3>教学成果</h3>
+        </div>
+        <div class="works-showcase">
+            <div class="works-layer works-back-layer">
+                <div class="work-card scroll-reveal-left">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Urban%20public%20space%20renovation%20modern%20park%20design%20community%20area%20green&image_size=portrait_4_3" alt="城市公共空间改造">
+                    <span class="work-card-label">环境设计</span>
+                </div>
+                <div class="work-card scroll-reveal-right">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Immersive%20interactive%20installation%20art%20digital%20media%20exhibition%20modern&image_size=landscape_4_3" alt="沉浸式交互装置">
+                    <span class="work-card-label">数字媒体</span>
+                </div>
+            </div>
+            <div class="works-layer works-front-layer">
+                <div class="work-card scroll-reveal-left scroll-reveal-delay-1">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Brand%20visual%20identity%20design%20logo%20system%20colorful%20graphic%20modern&image_size=landscape_4_3" alt="品牌视觉系统">
+                    <span class="work-card-label">视觉传达</span>
+                </div>
+                <div class="work-card scroll-reveal-right scroll-reveal-delay-1">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Smart%20wearable%20device%20design%20modern%20technology%20futuristic%20gadget&image_size=portrait_4_3" alt="智能穿戴设计">
+                    <span class="work-card-label">产品设计</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="news">
+        <div class="section-header scroll-reveal">
+            <span class="section-number">05</span>
+            <h2>NEWS</h2>
+            <h3>新闻动态</h3>
+        </div>
+        <div class="news-grid">
+            <div class="news-card scroll-reveal scroll-reveal-delay-1">
+                <div class="news-img">
+                    <img src="news-1.jpg" alt="毕业展现场">
+                </div>
+                <div class="news-content">
+                    <div class="news-date">2026.06</div>
+                    <h4>2026届毕业展精彩呈现</h4>
+                    <p>艺术与设计学院优秀毕业作品展盛大开幕</p>
+                </div>
+            </div>
+            <div class="news-card scroll-reveal scroll-reveal-delay-2">
+                <div class="news-img">
+                    <img src="news-2.jpg" alt="展览现场">
+                </div>
+                <div class="news-content">
+                    <div class="news-date">2026.06</div>
+                    <h4>师生共赏毕业佳作</h4>
+                    <p>展览吸引众多师生前来参观交流</p>
+                </div>
+            </div>
+            <div class="news-card scroll-reveal scroll-reveal-delay-3">
+                <div class="news-img">
+                    <img src="news-3.jpg" alt="领导参观">
+                </div>
+                <div class="news-content">
+                    <div class="news-date">2026.06</div>
+                    <h4>校领导莅临指导</h4>
+                    <p>校领导参观毕业展并给予高度评价</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>QUT ART</h3>
+                <p>青岛理工大学艺术与设计学院</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>地址：青岛市市北区抚顺路11号</p>
+                    <p>电话：0532-85071000</p>
+                    <p>邮箱：art@qut.edu.cn</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#about">学院概况</a></li>
+                        <li><a href="#programs">专业设置</a></li>
+                        <li><a href="#works">教学成果</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 QUT ART DESIGN. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <audio id="bgMusic" loop preload="auto">
+        <source src="666.MP3/666.MP3" type="audio/mpeg">
+    </audio>
+    <button class="music-toggle" id="musicToggle">
+        <i class="fas fa-music"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
