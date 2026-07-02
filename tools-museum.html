@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>青岛理工大学传统工具美学馆</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-museum {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20craft%20museum%20interior%20wooden%20ceiling%20warm%20lighting%20display%20cases%20with%20traditional%20tools%20red%20wall%20Chinese%20calligraphy%20artifacts%20exhibition&image_size=landscape_16_9') center/cover no-repeat;
+        }
+        
+        .hero-museum::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(20, 30, 60, 0.8) 100%);
+        }
+        
+        .hero-museum-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 150px 50px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .museum-logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 40px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 215, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+            animation: logoGlow 2s ease-in-out infinite;
+        }
+        
+        .museum-logo i {
+            font-size: 4rem;
+            color: #ffd700;
+            animation: iconFlash 2s ease-in-out infinite;
+        }
+        
+        @keyframes logoGlow {
+            0%, 100% { 
+                border-color: rgba(255, 215, 0, 0.5);
+                box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+            }
+            50% { 
+                border-color: rgba(255, 215, 0, 1);
+                box-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
+            }
+        }
+        
+        @keyframes iconFlash {
+            0%, 100% { 
+                color: #ffd700;
+                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+            }
+            25% { 
+                color: #ffec8b;
+                filter: drop-shadow(0 0 20px rgba(255, 236, 139, 0.8));
+            }
+            50% { 
+                color: #fffacd;
+                filter: drop-shadow(0 0 30px rgba(255, 250, 205, 1));
+            }
+            75% { 
+                color: #ffec8b;
+                filter: drop-shadow(0 0 20px rgba(255, 236, 139, 0.8));
+            }
+        }
+        
+        .hero-museum-content h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -3px;
+            color: #ffffff;
+        }
+        
+        .hero-museum-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        .logo-section {
+            padding: 100px 50px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, #0a0a15 100%);
+        }
+        
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+        
+        .section-title p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+        
+        .logo-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .logo-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .logo-item:hover {
+            border-color: rgba(255, 215, 0, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.1);
+        }
+        
+        .logo-item.selected {
+            border-color: #ffd700;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+        
+        .logo-item img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+        
+        .logo-item h4 {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+        }
+        
+        .logo-item p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .selected-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .poster-section {
+            padding: 100px 50px;
+            background: #0a0a15;
+        }
+        
+        .poster-container {
+            text-align: center;
+        }
+        
+        .poster-container img {
+            max-width: 800px;
+            width: 100%;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.2);
+        }
+        
+        .poster-container p {
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        .exhibits-section {
+            padding: 100px 50px;
+            background: linear-gradient(180deg, #0a0a15 0%, rgba(0, 0, 0, 0.95) 100%);
+        }
+        
+        .exhibits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .exhibit-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .exhibit-card:hover {
+            border-color: rgba(255, 215, 0, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .exhibit-header {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .exhibit-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .exhibit-card:hover .exhibit-header img {
+            transform: scale(1.1);
+        }
+        
+        .exhibit-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+        }
+        
+        .exhibit-category {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: #ffd700;
+            text-transform: uppercase;
+        }
+        
+        .exhibit-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .exhibit-content {
+            padding: 30px;
+        }
+        
+        .exhibit-desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-family: 'Noto Serif SC', serif;
+        }
+        
+        .exhibit-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .exhibit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: calc(25% - 12px);
+            min-width: 80px;
+        }
+        
+        .exhibit-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .exhibit-item:hover img {
+            transform: scale(1.1);
+            border-color: rgba(255, 215, 0, 0.8);
+        }
+        
+        .exhibit-item span {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+        }
+
+        .detail-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 10000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .detail-modal.active {
+            display: block;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.95);
+        }
+        
+        .modal-close-btn {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close-btn:hover {
+            color: #ffd700;
+        }
+        
+        .modal-content-inner {
+            padding: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .modal-title-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .modal-title-section h2 {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        
+        .modal-title-section p {
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 3px;
+        }
+        
+        .modal-main-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .modal-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            font-family: 'Noto Serif SC', serif;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .tool-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+        
+        .tool-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .tool-info {
+            padding: 20px;
+        }
+        
+        .tool-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+        
+        .tool-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .logo-showcase {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .exhibits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-museum-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .logo-showcase {
+                grid-template-columns: 1fr;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content-inner {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="index.html" class="logo">QUT<span>ART</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about-environment.html">环境设计</a></li>
+            <li><a href="graduation-exhibition.html">毕业展</a></li>
+            <li><a href="tools-museum.html" class="active">美学馆</a></li>
+            <li><a href="index.html#contact">联系我们</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <section class="hero-museum">
+        <div class="hero-museum-content">
+            <div class="museum-logo">
+                <i class="fas fa-hammer"></i>
+            </div>
+            <h1>传统工具美学馆</h1>
+            <p>探索中华传统工具的设计智慧与文化内涵，传承匠心精神，感受千年工艺之美</p>
+        </div>
+    </section>
+
+    <section class="logo-section">
+        <div class="section-container">
+            <div class="section-title scroll-reveal">
+                <h2>美学馆标志设计</h2>
+                <p>AI生成多个标志方案，经过评审选定最优方案</p>
+            </div>
+            
+            <div class="logo-showcase">
+                <div class="logo-item scroll-reveal-left">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20traditional%20tool%20museum%20logo%20design%20minimalist%20gold%20color%20ancient%20hammer%20symbol%20elegant%20calligraphy&image_size=square" alt="标志方案一">
+                    <h4>方案一：古韵传承</h4>
+                    <p>以传统工具为主体，融合书法艺术</p>
+                </div>
+                <div class="logo-item selected scroll-reveal">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20traditional%20craft%20museum%20logo%20modern%20geometric%20gold%20red%20chinese%20characters%20tools%20icon%20premium&image_size=square" alt="标志方案二">
+                    <h4>方案二：匠心独运</h4>
+                    <p>现代几何风格，体现传统与创新的融合</p>
+                    <div class="selected-badge">选定方案</div>
+                </div>
+                <div class="logo-item scroll-reveal-right">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20traditional%20artisan%20tools%20museum%20logo%20elegant%20bronze%20color%20traditional%20pattern%20cultural%20heritage&image_size=square" alt="标志方案三">
+                    <h4>方案三：青铜古韵</h4>
+                    <p>青铜色调，彰显历史厚重感</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="poster-section">
+        <div class="section-container">
+            <div class="section-title scroll-reveal">
+                <h2>主题海报</h2>
+                <p>展现中华传统工具设计价值与匠心传承</p>
+            </div>
+            
+            <div class="poster-container scroll-reveal-scale">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chinese%20traditional%20tools%20exhibition%20poster%20design%20elegant%20calligraphy%20ancient%20craft%20tools%20warm%20golden%20tones%20cultural%20heritage%20Chinese%20style&image_size=portrait_4_3" alt="传统工具美学馆主题海报">
+                <p>"工欲善其事，必先利其器。"——《论语·卫灵公》</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="exhibits-section">
+        <div class="section-container">
+            <div class="section-title scroll-reveal">
+                <h2>展品分类</h2>
+                <p>四大主题展区，探索传统工具的设计智慧</p>
+            </div>
+            
+            <div class="exhibits-grid">
+                <div class="exhibit-card scroll-reveal-left" data-category="女红心境">
+                    <div class="exhibit-header">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20sewing%20tools%20embroidery%20silk%20craft%20elegant%20feminine%20vintage%20aesthetic%20warm%20lighting&image_size=landscape_4_3" alt="女红工具">
+                        <div class="exhibit-overlay">
+                            <span class="exhibit-category">主题一</span>
+                            <h3 class="exhibit-title">女红心境</h3>
+                        </div>
+                    </div>
+                    <div class="exhibit-content">
+                        <p class="exhibit-desc">女红，是古代女性手工技艺的统称，包括刺绣、缝纫、编织等。这些精巧的工具承载着女性的细腻情感与审美追求，每一针一线都蕴含着对生活的热爱与对美的执着。</p>
+                        <div class="exhibit-items">
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Antique%20Chinese%20embroidery%20needles%20close%20up%20detail%20shot&image_size=square" alt="绣花针">
+                                <span>绣花针</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Colorful%20Chinese%20silk%20threads%20embroidery%20floss%20arranged&image_size=square" alt="丝线">
+                                <span>丝线</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20bamboo%20embroidery%20hoop%20frame&image_size=square" alt="绣绷">
+                                <span>绣绷</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20sewing%20scissors%20silver%20craft&image_size=square" alt="剪刀">
+                                <span>剪刀</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exhibit-card scroll-reveal-right" data-category="巧具以渔">
+                    <div class="exhibit-header">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20fishing%20tools%20nets%20bamboo%20fishing%20rod%20wooden%20boat%20coastal%20fishing%20culture%20serene&image_size=landscape_4_3" alt="渔具">
+                        <div class="exhibit-overlay">
+                            <span class="exhibit-category">主题二</span>
+                            <h3 class="exhibit-title">巧具以渔</h3>
+                        </div>
+                    </div>
+                    <div class="exhibit-content">
+                        <p class="exhibit-desc">渔具是人类与自然和谐共处的智慧结晶。从古老的渔网到精巧的鱼钩，每一件工具都凝聚着渔民世代相传的经验与智慧，见证着人类对海洋的探索与敬畏。</p>
+                        <div class="exhibit-items">
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20bamboo%20fishing%20net%20handwoven&image_size=square" alt="渔网">
+                                <span>渔网</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20fish%20spear%20harpoon&image_size=square" alt="鱼叉">
+                                <span>鱼叉</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20bamboo%20fishing%20basket&image_size=square" alt="渔篓">
+                                <span>渔篓</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20bamboo%20fishing%20rod&image_size=square" alt="钓竿">
+                                <span>钓竿</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exhibit-card scroll-reveal-left scroll-reveal-delay-1" data-category="墨定乾坤">
+                    <div class="exhibit-header">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20carpentry%20tools%20ink%20line%20marker%20woodworking%20ancient%20craftsmanship%20workshop%20warm%20atmosphere&image_size=landscape_4_3" alt="墨斗">
+                        <div class="exhibit-overlay">
+                            <span class="exhibit-category">主题三</span>
+                            <h3 class="exhibit-title">墨定乾坤</h3>
+                        </div>
+                    </div>
+                    <div class="exhibit-content">
+                        <p class="exhibit-desc">墨斗，作为传统木工的核心工具，不仅用于划线定位，更是匠师心中的准绳与法度的象征。它承载着中国传统建筑与家具制作的精湛技艺与严谨精神。</p>
+                        <div class="exhibit-items">
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20carpenter%20ink%20pot%20wooden%20box&image_size=square" alt="墨斗">
+                                <span>墨斗</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20woodworking%20plane%20tool&image_size=square" alt="刨子">
+                                <span>刨子</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20wood%20chisel%20tool&image_size=square" alt="凿子">
+                                <span>凿子</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20wooden%20hand%20saw&image_size=square" alt="锯子">
+                                <span>锯子</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exhibit-card scroll-reveal-right scroll-reveal-delay-1" data-category="模范生花">
+                    <div class="exhibit-header">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20molds%20for%20food%20crafts%20cake%20molds%20wooden%20carving%20traditional%20patterns%20artisan%20workshop&image_size=landscape_4_3" alt="模具">
+                        <div class="exhibit-overlay">
+                            <span class="exhibit-category">主题四</span>
+                            <h3 class="exhibit-title">模范生花</h3>
+                        </div>
+                    </div>
+                    <div class="exhibit-content">
+                        <p class="exhibit-desc">模具是传统食品工艺与民间艺术的完美结合。从月饼模到糕点模，精美的雕刻图案不仅赋予食物独特的造型，更承载着吉祥美好的寓意与节日的祝福。</p>
+                        <div class="exhibit-items">
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20mooncake%20mold%20wooden%20carving&image_size=square" alt="月饼模">
+                                <span>月饼模</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20pastry%20mold%20wooden%20carving&image_size=square" alt="糕点模">
+                                <span>糕点模</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20seal%20carving%20stone%20stamp&image_size=square" alt="印章模">
+                                <span>印章模</span>
+                            </div>
+                            <div class="exhibit-item">
+                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20clay%20sculpture%20mold&image_size=square" alt="泥塑模">
+                                <span>泥塑模</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>QUT ART</h3>
+                <p>青岛理工大学艺术与设计学院</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>地址：青岛市市北区抚顺路11号</p>
+                    <p>电话：0532-85071000</p>
+                    <p>邮箱：art@qut.edu.cn</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="index.html#about">学院概况</a></li>
+                        <li><a href="index.html#programs">专业设置</a></li>
+                        <li><a href="index.html#works">教学成果</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 QUT ART DESIGN. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="detail-modal" id="detailModal">
+        <div class="modal-header">
+            <h3>展品详情</h3>
+            <span class="modal-close-btn" id="modalClose">&times;</span>
+        </div>
+        <div class="modal-content-inner">
+            <div class="modal-title-section">
+                <h2 id="modalCategory"></h2>
+                <p id="modalSubtitle"></p>
+            </div>
+            <img id="modalMainImage" class="modal-main-image" src="" alt="">
+            <p class="modal-description" id="modalDescription"></p>
+            <div class="tools-grid" id="toolsGrid"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const exhibitCards = document.querySelectorAll('.exhibit-card');
+            const modal = document.getElementById('detailModal');
+            const modalClose = document.getElementById('modalClose');
+
+            const exhibitsData = {
+                '女红心境': {
+                    subtitle: '针线之间的诗意栖居',
+                    description: '女红，又称女工，是中国古代女性所从事的手工技艺的总称，包括刺绣、缝纫、编织、剪纸等。这些看似平凡的工具，承载着女性的智慧、情感与审美追求。在男耕女织的传统社会中，女红不仅是谋生技能，更是女性表达自我、寄托情感的重要方式。每一件精美的绣品、每一针细密的针线，都诉说着女性对美好生活的向往与追求。',
+                    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20sewing%20tools%20embroidery%20silk%20craft%20elegant%20feminine%20vintage%20aesthetic%20warm%20lighting&image_size=landscape_4_3',
+                    tools: [
+                        { name: '绣花针', desc: '精钢打造，针鼻细小，用于刺绣各种精美的图案', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Antique%20Chinese%20embroidery%20needles%20set%20silver%20needles%20sewing%20tools%20close%20up%20detail%20shot&image_size=square' },
+                        { name: '苏绣丝线', desc: '产自苏州的优质丝线，色彩丰富，光泽柔和', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Colorful%20Chinese%20silk%20threads%20embroidery%20floss%20arranged%20in%20traditional%20pattern%20vibrant%20colors%20artistic&image_size=square' },
+                        { name: '竹制绣绷', desc: '将布料绷紧的工具，使刺绣时更加平整', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20bamboo%20embroidery%20hoop%20circular%20frame%20with%20fabric%20craft%20tool%20natural%20wood%20texture&image_size=square' },
+                        { name: '张小泉剪刀', desc: '著名的剪刀品牌，锋利耐用，用于剪裁丝线和布料', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20sewing%20scissors%20silver%20metal%20elegant%20design%20vintage%20craft%20tool%20close%20up&image_size=square' },
+                        { name: '针线笸箩', desc: '盛放针线工具的容器，通常为竹编或漆器', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20bamboo%20sewing%20basket%20woven%20container%20with%20needles%20and%20threads%20vintage&image_size=square' },
+                        { name: '顶针', desc: '戴在手指上保护手指的金属环，用于顶针缝厚料', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20silver%20thimble%20finger%20protector%20sewing%20tool%20vintage%20craft%20intricate%20pattern&image_size=square' }
+                    ]
+                },
+                '巧具以渔': {
+                    subtitle: '江海之上的生存智慧',
+                    description: '中国有着漫长的海岸线和丰富的内陆水域，渔具的发展反映了人类与自然和谐共处的智慧。从简单的鱼叉到复杂的渔网，从独木舟到大型渔船，每一件渔具都凝聚着渔民世代相传的经验与智慧。这些工具不仅是谋生的手段，更是海洋文化的重要组成部分，承载着人们对大海的敬畏与感恩。',
+                    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20fishing%20tools%20nets%20bamboo%20fishing%20rod%20wooden%20boat%20coastal%20fishing%20culture%20serene&image_size=landscape_4_3',
+                    tools: [
+                        { name: '竹制渔网', desc: '手工编织的渔网，网眼大小根据目标鱼类而定', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20bamboo%20fishing%20net%20handwoven%20mesh%20fishing%20equipment%20coastal%20traditional&image_size=square' },
+                        { name: '鱼叉', desc: '长柄捕鱼工具，用于叉取较大的鱼类', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20fish%20spear%20harpoon%20wooden%20handle%20metal%20prongs%20fishing%20tool%20vintage&image_size=square' },
+                        { name: '竹编渔篓', desc: '用于存放捕获的鱼，透气耐用', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20bamboo%20fishing%20basket%20woven%20creel%20fish%20storage%20vintage%20craft%20natural&image_size=square' },
+                        { name: '木钓竿', desc: '手工制作的钓鱼竿，通常用韧性好的木材制成', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20bamboo%20fishing%20rod%20handcrafted%20wooden%20pole%20fishing%20equipment%20traditional&image_size=square' },
+                        { name: '鱼漂', desc: '浮在水面的指示器，帮助钓手判断鱼是否咬钩', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20fishing%20float%20cork%20bamboo%20colorful%20bobber%20fishing%20accessory&image_size=square' },
+                        { name: '渔灯', desc: '夜晚捕鱼时使用的灯具，吸引趋光性鱼类', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20fishing%20lantern%20oil%20lamp%20bamboo%20frame%20paper%20shade%20vintage%20warm%20light&image_size=square' }
+                    ]
+                },
+                '墨定乾坤': {
+                    subtitle: '木作中的法度与匠心',
+                    description: '墨斗是中国传统木工的核心工具，用于在木料上弹出笔直的墨线，作为切割和刨削的基准。它不仅是实用工具，更是匠师心中的准绳与法度的象征。传统木工讲究"量体裁衣"，墨斗便是这一理念的物质体现。每一位优秀的木匠都有自己得心应手的墨斗，它见证了无数精美家具和建筑的诞生。',
+                    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20carpentry%20tools%20ink%20line%20marker%20woodworking%20ancient%20craftsmanship%20workshop%20warm%20atmosphere&image_size=landscape_4_3',
+                    tools: [
+                        { name: '墨斗', desc: '传统木工划线工具，由墨仓、线轮、定针组成', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20carpenter%20ink%20pot%20wooden%20box%20black%20ink%20line%20tool%20craftsmanship%20vintage&image_size=square' },
+                        { name: '刨子', desc: '用于刨平木料表面的工具，使木材光滑平整', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20woodworking%20plane%20tool%20wooden%20handle%20metal%20blade%20carpentry%20vintage&image_size=square' },
+                        { name: '凿子', desc: '用于凿孔或开槽的工具，有多种尺寸', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20wood%20chisel%20tool%20wooden%20handle%20metal%20blade%20carpentry%20craft%20vintage&image_size=square' },
+                        { name: '木锯', desc: '用于切割木材的工具，有手工锯和框架锯等', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20wooden%20hand%20saw%20carpentry%20tool%20vintage%20craftsmanship%20antique&image_size=square' },
+                        { name: '木锉', desc: '用于打磨木料边缘，使其光滑或成型', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20wood%20file%20rasp%20tool%20carpentry%20craftsmanship%20vintage%20metal%20tool&image_size=square' },
+                        { name: '鲁班尺', desc: '传统木工测量工具，带有吉凶刻度', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20carpenter%20ruler%20wooden%20measuring%20tool%20with%20Chinese%20characters%20vintage%20scale&image_size=square' }
+                    ]
+                },
+                '模范生花': {
+                    subtitle: '模印之间的吉祥寓意',
+                    description: '模具是传统食品工艺与民间艺术的完美结合。从月饼模到糕点模，从泥塑模到印章模，精美的雕刻图案不仅赋予物品独特的造型，更承载着吉祥美好的寓意。这些模具多为木质，由匠人手工雕刻而成，每一件都是独一无二的艺术品。在节日庆典中，使用这些模具制作的食品不仅满足口腹之欲，更是传递祝福的重要载体。',
+                    image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20molds%20for%20food%20crafts%20cake%20molds%20wooden%20carving%20traditional%20patterns%20artisan%20workshop&image_size=landscape_4_3',
+                    tools: [
+                        { name: '月饼模具', desc: '雕刻精美的木质模具，用于制作中秋月饼', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20mooncake%20mold%20wooden%20carving%20intricate%20flower%20pattern%20vintage%20craft&image_size=square' },
+                        { name: '糕点模具', desc: '用于制作各种传统糕点的模具，图案多样', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20pastry%20mold%20wooden%20carving%20beautiful%20patterns%20food%20craft%20vintage&image_size=square' },
+                        { name: '活字印模', desc: '古代印刷工具，可组合成不同文字', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20movable%20type%20printing%20wooden%20characters%20ancient%20printing%20technology&image_size=square' },
+                        { name: '泥塑模具', desc: '用于制作泥人、泥玩具的模具', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20clay%20sculpture%20mold%20pottery%20craft%20traditional%20artisan%20workshop&image_size=square' },
+                        { name: '印章模具', desc: '用于制作印章的母模，雕刻精细', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20seal%20carving%20stone%20stamp%20art%20calligraphy%20craft%20intricate%20design&image_size=square' },
+                        { name: '糖画模具', desc: '用于制作糖画的铜制或木制模具', image: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Traditional%20Chinese%20sugar%20art%20mold%20copper%20traditional%20craft%20colorful%20sweet%20patterns&image_size=square' }
+                    ]
+                }
+            };
+
+            exhibitCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    const data = exhibitsData[category];
+                    
+                    document.getElementById('modalCategory').textContent = category;
+                    document.getElementById('modalSubtitle').textContent = data.subtitle;
+                    document.getElementById('modalMainImage').src = data.image;
+                    document.getElementById('modalDescription').textContent = data.description;
+                    
+                    const toolsGrid = document.getElementById('toolsGrid');
+                    toolsGrid.innerHTML = '';
+                    
+                    data.tools.forEach(tool => {
+                        const toolCard = document.createElement('div');
+                        toolCard.className = 'tool-card';
+                        toolCard.innerHTML = `
+                            <img class="tool-image" src="${tool.image}" alt="${tool.name}">
+                            <div class="tool-info">
+                                <h4>${tool.name}</h4>
+                                <p>${tool.desc}</p>
+                            </div>
+                        `;
+                        toolsGrid.appendChild(toolCard);
+                    });
+                    
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            modalClose.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    menuToggle.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            const navLinkItems = document.querySelectorAll('.nav-links a');
+            navLinkItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
