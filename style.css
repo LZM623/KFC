@@ -132,11 +132,11 @@
 }
 
 /* Page content transition */
-body.loading > *:not(.preloader) {
+body.loading > *:not(.preloader):not(.music-toggle) {
     opacity: 0;
 }
 
-body.loaded > *:not(.preloader) {
+body.loaded > *:not(.preloader):not(.music-toggle) {
     opacity: 1;
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
 }

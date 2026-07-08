@@ -1,3 +1,142 @@
+// ========== Preloader ==========
+(function() {
+    var preloader = document.getElementById('preloader');
+    var circle = document.getElementById('preloaderCircle');
+    var percentEl = document.getElementById('preloaderPercent');
+    var enterBtn = document.getElementById('preloaderEnter');
+
+    // Only show preloader on first visit in this session
+    var hasVisited = sessionStorage.getItem('qut_preloader_shown');
+
+    if (hasVisited || !preloader || !circle || !percentEl) {
+        // Already visited or no preloader element - skip animation
+        if (preloader) preloader.remove();
+        document.body.classList.remove('loading');
+        document.body.classList.add('loaded');
+
+        // Try to resume music if it was playing
+        var bgMusic = document.getElementById('bgMusic');
+        var musicBtn = document.getElementById('musicToggle');
+        if (bgMusic && sessionStorage.getItem('qut_music_playing') === 'true') {
+            bgMusic.volume = 0.4;
+            var playPromise = bgMusic.play();
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    if (musicBtn) musicBtn.classList.add('playing');
+                }).catch(function() {
+                    if (musicBtn) musicBtn.classList.add('visible');
+                });
+            }
+        } else if (musicBtn) {
+            musicBtn.classList.add('visible');
+        }
+        return;
+    }
+
+    document.body.classList.add('loading');
+
+    var circumference = 2 * Math.PI * 52; // r=52
+    var duration = 2200; // ms
+    var startTime = null;
+    var currentPercent = 0;
+
+    function easeOutQuart(t) {
+        return 1 - Math.pow(1 - t, 4);
+    }
+
+    function enterSite() {
+        preloader.classList.add('done');
+        document.body.classList.remove('loading');
+        document.body.classList.add('loaded');
+
+        // Mark as visited so preloader won't show again this session
+        sessionStorage.setItem('qut_preloader_shown', 'true');
+
+        // Start background music (user has clicked, so autoplay is allowed)
+        var bgMusic = document.getElementById('bgMusic');
+        var musicBtn = document.getElementById('musicToggle');
+        if (bgMusic) {
+            bgMusic.volume = 0.4;
+            var playPromise = bgMusic.play();
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    if (musicBtn) musicBtn.classList.add('playing');
+                    sessionStorage.setItem('qut_music_playing', 'true');
+                }).catch(function() {
+                    if (musicBtn) musicBtn.classList.add('visible');
+                });
+            }
+        }
+
+        // Remove preloader from DOM after transition
+        setTimeout(function() {
+            preloader.remove();
+        }, 1000);
+    }
+
+    // Click "Enter" button to enter site and play music
+    if (enterBtn) {
+        enterBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            enterSite();
+        });
+    }
+
+    function animateProgress(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var elapsed = timestamp - startTime;
+        var progress = Math.min(elapsed / duration, 1);
+        var easedProgress = easeOutQuart(progress);
+        currentPercent = Math.round(easedProgress * 100);
+
+        // Update circle
+        var offset = circumference - (easedProgress * circumference);
+        circle.style.strokeDashoffset = offset;
+
+        // Update percent text
+        percentEl.textContent = currentPercent;
+
+        if (progress < 1) {
+            requestAnimationFrame(animateProgress);
+        } else {
+            // Progress done - show enter button instead of auto-entering
+            setTimeout(function() {
+                if (enterBtn) enterBtn.classList.add('show');
+            }, 300);
+        }
+    }
+
+    requestAnimationFrame(animateProgress);
+})();
+
+// ========== Music Toggle ==========
+document.addEventListener('DOMContentLoaded', function() {
+    var musicBtn = document.getElementById('musicToggle');
+    var bgMusic = document.getElementById('bgMusic');
+    if (!musicBtn || !bgMusic) return;
+
+    musicBtn.addEventListener('click', function() {
+        if (bgMusic.paused) {
+            bgMusic.volume = 0.4;
+            bgMusic.play();
+            musicBtn.classList.add('playing');
+            sessionStorage.setItem('qut_music_playing', 'true');
+        } else {
+            bgMusic.pause();
+            musicBtn.classList.remove('playing');
+            sessionStorage.setItem('qut_music_playing', 'false');
+        }
+    });
+
+    // Show music button
+    if (!musicBtn.classList.contains('playing') && !musicBtn.classList.contains('visible')) {
+        document.addEventListener('click', function showOnce() {
+            musicBtn.classList.add('visible');
+            document.removeEventListener('click', showOnce);
+        });
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.getElementById('navbar');
     if (navbar) {
